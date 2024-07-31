@@ -14,7 +14,7 @@
                 navigator.geolocation.getCurrentPosition(position => {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
-                    const phoneNumber = '+33623737892'; // Remplacez par votre numéro WhatsApp
+                    const phoneNumber = '+213551270665'; // Remplacez par votre numéro WhatsApp
                     const message = `https://maps.google.com/maps?q=loc:${latitude},${longitude}`;
                     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                     
