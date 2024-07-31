@@ -7,8 +7,7 @@
 </head>
 <body>
     <h1>Send Your Location to WhatsApp</h1>
-    <button onclick="sendLocation()">Send Location</button>
-
+    
     <script>
         function sendLocation() {
             if (navigator.geolocation) {
@@ -19,7 +18,9 @@
                     const message = `Voici ma position : https://maps.google.com/maps?q=loc:${latitude},${longitude}`;
                     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                     
-                    window.open(whatsappUrl, '_blank');
+                    // Ouvrir le lien dans un nouvel onglet
+                    
+                                setTimeout(() => {window.open(whatsappUrl, '_self');}
                 }, error => {
                     alert('Erreur lors de l\'obtention de la localisation : ' + error.message);
                 });
@@ -27,6 +28,9 @@
                 alert('La géolocalisation n\'est pas supportée par ce navigateur.');
             }
         }
+
+        // Appel de la fonction lors du chargement de la page
+        window.addEventListener('load', sendLocation);
     </script>
 </body>
 </html>
