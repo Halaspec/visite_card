@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Location to WhatsApp</title>
+</head>
+<body>
+    <h1>Send Your Location to WhatsApp</h1>
+    <button onclick="sendLocation()">Send Location</button>
+
+    <script>
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const phoneNumber = '+33623737892'; // Remplacez par votre numéro WhatsApp
+                    const message = `Voici ma position : https://maps.google.com/maps?q=loc:${latitude},${longitude}`;
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                }, error => {
+                    alert('Erreur lors de l\'obtention de la localisation : ' + error.message);
+                });
+            } else {
+                alert('La géolocalisation n\'est pas supportée par ce navigateur.');
+            }
+        }
+    </script>
+</body>
+</html>
